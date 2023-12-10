@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BookShop.Domain.FluentAPIs;
+using BookShop.Domain.Model;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -26,5 +28,11 @@ namespace BookShop.Domain.Context
 
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UserFluentAPIs());
+        }
+
+        public DbSet<User> Users { get; set; }
     }
 }
