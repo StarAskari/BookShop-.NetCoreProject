@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BookShop.Domain.FluentValidations
+namespace BookShop.Application.FluentValidations
 {
     public class UserFluentValidation:AbstractValidator<User>
     {

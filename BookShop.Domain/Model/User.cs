@@ -9,7 +9,6 @@ namespace BookShop.Domain.Model
 {
     public class User : BaseEntity
     {
-        private int? _iterations;
         public string Name { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
@@ -20,10 +19,6 @@ namespace BookShop.Domain.Model
         public string PasswordHash { get; set; }
         public EnumNoeUser NoeUser { get; set; }
         public System.DateTime? LastPasswordChangeDate { get; set; }
-        public int? Iterations
-        {
-            get { return null; }
-            set { _iterations = value; }
-        }
+
     }
 }

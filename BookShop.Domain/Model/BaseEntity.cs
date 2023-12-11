@@ -13,8 +13,7 @@ namespace BookShop.Domain.Model
     {
         [Key]
         [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
-        [Column(TypeName ="numeric(18,0)")]
-        public decimal Id { get; set; }
+        public int Id { get; set; }
         public DateTime InsertDate { get; set; }=DateTime.Now;
         public DateTime EditTime { get; set; } = DateTime.Now;
         public EnumActiveOrNot IsActive { get; set; }

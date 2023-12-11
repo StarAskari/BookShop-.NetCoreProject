@@ -23,8 +23,7 @@ namespace BookShop.Domain.FluentAPIs
             builder.Property(u => u.ValidDate).HasColumnName(@"ValidDate").HasColumnType("char").IsFixedLength().IsUnicode(false).HasMaxLength(10).IsRequired();
             builder.Property(u => u.LastLoginDate).HasColumnName(@"LastLoginDate").HasColumnType("datetime");
             builder.Property(u => u.LastPasswordChangeDate).HasColumnName(@"LastPasswordChangeDate").HasColumnType("datetime");
-            builder.Property(x => x.Iterations).HasColumnName(@"Iterations").HasColumnType("int");
-            builder.ToTable("User");
+            builder.ToTable("User");  
         }
     }
 }

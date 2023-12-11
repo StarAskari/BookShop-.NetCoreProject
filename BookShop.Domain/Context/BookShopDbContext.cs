@@ -34,5 +34,7 @@ namespace BookShop.Domain.Context
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Permission> Permission { get; set; }
     }
 }
