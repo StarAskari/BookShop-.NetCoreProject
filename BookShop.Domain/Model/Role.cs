@@ -13,6 +13,8 @@ namespace BookShop.Domain.Model
         public int? ParentRoleId { get; set; }
         public Role ParentRole { get; set; }
         public ICollection<Role> childRoles { get; set; }
+        public ICollection<RolePermission> rolePermissions { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
 
     }
 }

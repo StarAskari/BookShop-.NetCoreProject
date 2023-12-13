@@ -4,6 +4,7 @@ using BookShop.Domain.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShop.Domain.Migrations
 {
     [DbContext(typeof(BookShopDbContext))]
-    partial class BookShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231213002152_AddUseroleandrolepemissionToDb")]
+    partial class AddUseroleandrolepemissionToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -19,6 +19,7 @@ namespace BookShop.Domain.Model
         public string PasswordHash { get; set; }
         public EnumNoeUser NoeUser { get; set; }
         public System.DateTime? LastPasswordChangeDate { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
 
     }
 }
