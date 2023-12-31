@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookShop.Infrastructure.Iterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace BookShop.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
     {
+        IUserRepository UserRepository { get; }
         int Complete();
     }
 }

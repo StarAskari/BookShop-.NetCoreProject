@@ -16,10 +16,12 @@ namespace BookShop.Infrastructure
             _dbContext = dbContext;
         }
 
-        public void Delete(TEntity entity)
+        public async Task DeleteAsync(TEntity entity)
         {
             _dbContext.Set<TEntity>().Remove(entity);
-            _dbContext.SaveChanges();
+            
+           await _dbContext.SaveChangesAsync();
+
 
         }
 
@@ -34,12 +36,13 @@ namespace BookShop.Infrastructure
             return _dbContext.Set<TEntity>().ToList();
         }
 
-        public async Task<TEntity> Save(TEntity entity)
+        public void Save(TEntity entity)
         {
             try
             {
+               
                 _dbContext.Set<TEntity>().Add(entity);
-                await _dbContext.SaveChangesAsync();
+                 _dbContext.SaveChangesAsync();
 
 
             }
@@ -47,7 +50,6 @@ namespace BookShop.Infrastructure
             {
                 throw e;
             }
-            return null;
         }
 
 
