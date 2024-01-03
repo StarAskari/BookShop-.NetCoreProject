@@ -30,7 +30,7 @@ namespace BookShop.Domain.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserFluentAPIs());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserFluentAPIs).Assembly);
         }
 
         public DbSet<User> Users { get; set; }

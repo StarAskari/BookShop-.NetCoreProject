@@ -16,9 +16,13 @@ namespace BookShop.Infrastructure
         {
             _context = context;
             UserRepository = new UserRepository(_context);
+            RoleRepository = new RoleRepository(_context);
+            UserRoleRepository=new UserRoleRepository(_context);
 
         }
         public IUserRepository UserRepository { get; set; }
+        public IRoleRepository RoleRepository { get; set; }
+        public IUserRoleRepository UserRoleRepository { get; set; }
         public int Complete()
         {
             return _context.SaveChanges();

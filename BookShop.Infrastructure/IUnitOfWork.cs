@@ -10,6 +10,8 @@ namespace BookShop.Infrastructure
     public interface IUnitOfWork : IDisposable
     {
         IUserRepository UserRepository { get; }
+        IRoleRepository RoleRepository { get; }
+        IUserRoleRepository UserRoleRepository { get; }
         int Complete();
     }
 }

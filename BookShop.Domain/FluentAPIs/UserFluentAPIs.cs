@@ -20,7 +20,7 @@ namespace BookShop.Domain.FluentAPIs
             builder.Property(x => x.ConfirmedEmail).HasColumnName("ConfirmedEmail").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             builder.Property(x => x.PhoneNumber).HasColumnName("PhoneNumber").HasColumnType("char").IsFixedLength().HasMaxLength(11).IsRequired();
             builder.Property(x => x.NoeUser).HasColumnName("NoeUser").HasColumnType("int").IsRequired();
-            builder.Property(u => u.ValidDate).HasColumnName(@"ValidDate").HasColumnType("char").IsFixedLength().IsUnicode(false).HasMaxLength(10).IsRequired();
+            builder.Property(u => u.ValidDate).HasColumnName(@"ValidDate").HasColumnType("char").IsFixedLength().IsUnicode(false).HasMaxLength(10).IsRequired(false); ;
             builder.Property(u => u.LastLoginDate).HasColumnName(@"LastLoginDate").HasColumnType("datetime");
             builder.Property(u => u.LastPasswordChangeDate).HasColumnName(@"LastPasswordChangeDate").HasColumnType("datetime");
             builder.ToTable("User");  

@@ -4,9 +4,9 @@ using BookShop.Infrastructure;
 
 namespace BookShop.Application.Interfaces
 {
-    public interface IUserService:IService<User>
+    public interface IUserRoleService : IService<UserRole>
     {
 
-        Task<int> RegisterNewUser(UserDTO user);
+        
     }
 }

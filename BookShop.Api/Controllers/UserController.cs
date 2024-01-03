@@ -4,6 +4,7 @@ using BookShop.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using BookShop.Application.DtoModels;
 
 namespace BookShop.Api.Controllers
 {
@@ -20,23 +21,24 @@ namespace BookShop.Api.Controllers
             _mapper = mapper;
         }
 
-        //public async Task<IActionResult> Register(UserDTO userDto)
-        //{
-        //    var user = _mapper.Map<User>(userDto);
-        //    user.PasswordHash = userDto.pasword.GetHashCode().ToString();
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return StatusCode(StatusCodes.Status400BadRequest, ModelState);
-        //    }
-        //    try
-        //    {
-        //        await _userService.RegisterNewUser(user);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //  return RedirectToAction("Index", "Home");
-        //}
+        [HttpPost(Name = "RegisterNewUser")]
+       
+        public async Task<IActionResult> Register(UserDTO userDto)
+        {
+            int userId = 0;
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(StatusCodes.Status400BadRequest, ModelState);
+            }
+            try
+            {
+               userId= await _userService.RegisterNewUser(userDto);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return StatusCode(StatusCodes.Status200OK, userId);
+        }
     }
 }

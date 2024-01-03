@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace BookShop.Infrastructure
 {
@@ -38,10 +39,11 @@ namespace BookShop.Infrastructure
 
         public void Save(TEntity entity)
         {
+
             try
             {
                
-                _dbContext.Set<TEntity>().Add(entity);
+               var res= _dbContext.Set<TEntity>().Add(entity);
                  _dbContext.SaveChangesAsync();
 
 
@@ -49,6 +51,24 @@ namespace BookShop.Infrastructure
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+        public async Task AsyncSave(TEntity entity)
+        {
+            using (var transaction = await _dbContext.Database.BeginTransactionAsync())
+            {
+                try
+                {
+
+                    _dbContext.Set<TEntity>().Add(entity);
+                    await _dbContext.SaveChangesAsync();
+                   await transaction.CommitAsync();
+                }
+                catch (Exception e)
+                {
+                   await transaction.RollbackAsync();
+                    throw e;
+                }
             }
         }
 
@@ -107,6 +127,21 @@ namespace BookShop.Infrastructure
         {
             _dbContext.Set<TEntity>().AddRange(entities);
             _dbContext.SaveChanges();
+        }
+
+        public int GetAutoGenaretedID(TEntity entity)
+        {
+            var propertyInfo = entity.GetType().GetProperty("Id");
+            if (propertyInfo != null)
+            {
+                // Obtain the value of the Id property and cast it to an integer
+                int id = (int)propertyInfo.GetValue(entity);
+                return id;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

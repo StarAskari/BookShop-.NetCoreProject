@@ -13,6 +13,7 @@ namespace BookShop.Application
         IEnumerable<TEntity> GetAll(string[] includes = null);
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         void Save(TEntity entity);
+        Task SaveAsync(TEntity entity);
         void SaveList(IEnumerable<TEntity> entities);
 
         void Delete(TEntity entity);
